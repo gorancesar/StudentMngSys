@@ -5,7 +5,7 @@
  */
 class Students extends Controller 
 {
-    function index($id='')
+    function index($id=null)
     {
         echo "inside of students ".$id;
     }
