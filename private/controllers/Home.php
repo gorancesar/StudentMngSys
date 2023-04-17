@@ -1,6 +1,6 @@
 <?php
 /**
- * undocumented class
+ * Home controller.
  */
 class Home extends Controller 
 {
