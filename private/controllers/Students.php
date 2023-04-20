@@ -1,7 +1,7 @@
 <?php
 
 /**
- * undocumented class
+ * Student controller
  */
 class Students extends Controller 
 {
