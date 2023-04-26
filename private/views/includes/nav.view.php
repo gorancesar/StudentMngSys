@@ -17,23 +17,26 @@
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">DASHBOARD</a>
+          <a class="nav-link active" aria-current="page" href="<?=ROOT?>">DASHBOARD</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">CLASSES</a>
+          <a class="nav-link" href="<?=ROOT?>/Users">USERS</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">TESTS</a>
+          <a class="nav-link" href="<?=ROOT?>/Classes">CLASSES</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="<?=ROOT?>/Tests">TESTS</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             USER
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Profile</a></li>
-            <li><a class="dropdown-item" href="#">Dashboard</a></li>
+            <li><a class="dropdown-item" href="<?=ROOT?>/Profile">Profile</a></li>
+            <li><a class="dropdown-item" href="<?=ROOT?>">Dashboard</a></li>
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Logout</a></li>
+            <li><a class="dropdown-item" href="<?=ROOT?>/Logout">Logout</a></li>
           </ul>
         </li>
       </ul>
