@@ -24,29 +24,41 @@ class Model extends Database
     }
 
     public function insert($data)
-    {
+    {   
+        $valuesfromdata=array_values($data);
         $keys = array_keys($data);
         $columns = implode(',', $keys);
-        $values = implode("',':", $keys);
-        var_dump($columns,$values);
-        $query = "insert into $this->table ($columns) values (':$values')"; //
+        $valuesfromdata=implode("','",$valuesfromdata);
+        var_dump($valuesfromdata);
+        $query = "insert into $this->table ($columns) values ('$valuesfromdata')"; //
+        
         return $this->query($query, $data);
 
     }
 
     public function update($id, $data)
     {
-        $column = addslashes($column);
-        $query = "select * from $this->table where $column LIKE '$value'"; //
-        return $this->query($query, ['value' => $value]);
+        $str = "";
+
+        foreach($data as $key => $value){
+            $str .=$key. "="."'$value'".",";
+        }
+        $str = trim($str,",");
+        $data['id'] = $id;
+
+        $query = "update $this->table set $str where id='$id'"; //
+        //echo $query;
+        echo $str;
+        return $this->query($query, $data);
 
     }
 
     public function delete($id)
     {
-        $column = addslashes($column);
-        $query = "select * from $this->table where $column LIKE '$value'"; //
-        return $this->query($query, ['value' => $value]);
+        
+        $query = "delete from $this->table where id ='$id'"; //
+        $data['id']=$id;
+        return $this->query($query, $data);
 
     }
 

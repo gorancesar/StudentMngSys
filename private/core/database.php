@@ -16,21 +16,26 @@ class Database
     {
         $connection=$this->connect();
         $stm=$connection->prepare($query);               // Prepare statement using query.
-
+        
         if($stm){
             $check=$stm->execute();
+            
             if($check){
                 if($data_type=="object"){                           //
-                    $data = $stm->fetchAll(PDO::FETCH_OBJ);         //
+                    $data = $stm->fetchAll(PDO::FETCH_OBJ);  
+                         //
                 }else{                                              //
                     $data = $stm->fetchAll(PDO::FETCH_ASSOC);       //Security check.
                 }
                 if(is_array($data)&& count($data)>0){
                     return $data;
+                    
                 }
             }
         }
+        
         return false;
+        
     }
-
+    
 }
