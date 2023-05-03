@@ -9,7 +9,7 @@ class Home extends Controller
         $user = new User();
 
         
-        $user->delete(9);
+        
         $data = $user->findAll();
 
          $this->view('home',['rows'=>$data]);
