@@ -14,7 +14,7 @@ class Signup extends Controller
             {
                 $arr['firstname']= $_POST['firstname'];
                 $arr['lastname']= $_POST['lastname'];
-                $arr['gender']= $_POST['gender'];
+                $arr['gender']= $_POST['gender']; 
                 $arr['authorization_level']= $_POST['rank'];
                 $arr['password']= password_hash($_POST['password'],PASSWORD_DEFAULT);
                 $arr['creation_date']= date("Y-m-d H:i:s");

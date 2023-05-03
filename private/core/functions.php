@@ -17,7 +17,7 @@ function get_select($key,$value)
             return "selected";
         }
     }
-    return "";
+    return ""; 
 }
 
 //escape special Html car..
