@@ -26,13 +26,13 @@
                 <option <?= get_select('gender', 'male') ?> value="male">Male</option>
                 <option <?= get_select('gender', 'female') ?> value="female">Female</option>
             </select>
-            <select class="form-control" style="margin-top:5%;" name="rank">
-                <option <?= get_select('rank', '') ?> value="">--Select a Rank--</option>
-                <option <?= get_select('rank', 'student') ?> value="student">Student</option>
-                <option <?= get_select('rank', 'reception') ?> value="reception">Reception</option>
-                <option <?= get_select('rank', 'lecturer') ?> value="lecturer">Lecturer</option>
-                <option <?= get_select('rank', 'admin') ?> value="admin">Admin</option>
-                <option <?= get_select('rank', 'super_admin') ?> value="super_admin">Super Admin</option>
+            <select class="form-control" style="margin-top:5%;" name="authorization_level">
+                <option <?= get_select('authorization_level', '') ?> value="">--Select a Rank--</option>
+                <option <?= get_select('authorization_level', 'student') ?> value="student">Student</option>
+                <option <?= get_select('authorization_level', 'reception') ?> value="reception">Reception</option>
+                <option <?= get_select('authorization_level', 'lecturer') ?> value="lecturer">Lecturer</option>
+                <option <?= get_select('authorization_level', 'admin') ?> value="admin">Admin</option>
+                <option <?= get_select('authorization_level', 'super_admin') ?> value="super_admin">Super Admin</option>
             </select>
 
             <input class="from-control" <?= get_var('password') ?> type="text" name="password" placeholder="Password"

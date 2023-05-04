@@ -25,10 +25,18 @@
           <a class="nav-link active" aria-current="page" href="<?=ROOT?>">DASHBOARD</a>
         </li>
         <li class="nav-item border-end border-start">
-          <a class="nav-link" href="<?=ROOT?>/Users">USERS</a>
+          <a class="nav-link" href="<?=ROOT?>/Schools">SCHOOLS</a>
+        </li>
+        <li class="nav-item border-end">
+          <a class="nav-link" href="<?=ROOT?>/Users">STAFF</a>
+        </li>
+        <li class="nav-item border-end">
+          <a class="nav-link" href="<?=ROOT?>/Students">STUDENTS</a>
+        </li>
         </li>
         <li class="nav-item border-end">
           <a class="nav-link" href="<?=ROOT?>/Classes">CLASSES</a>
+        </li>
         </li>
         <li class="nav-item border-end">
           <a class="nav-link" href="<?=ROOT?>/Tests">TESTS</a>
@@ -36,7 +44,7 @@
         <div class="navbar-collapse justify-content-end">
         <li class="nav-item dropdown ">
           <a class="nav-link dropdown-toggle border-start" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            USER
+            <?=Auth::getFirstname()?>
           </a>
           <ul class="dropdown-menu dropdown-menu-end ">
             <li><a class="dropdown-item" href="<?=ROOT?>/Profile">Profile</a></li>

@@ -2,7 +2,7 @@
 /**
  * Home controller.
  */
-class Home extends Controller 
+class Users extends Controller 
 {
     function index()
     {   
@@ -15,6 +15,6 @@ class Home extends Controller
         
         $data = $user->findAll();
 
-         $this->view('home',['rows'=>$data]);
+         $this->view('users',['rows'=>$data]);
     }
 }
