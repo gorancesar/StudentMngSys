@@ -13,7 +13,7 @@
   <div class="container-fluid">
     <a class="navbar-brand" href="#">
       <img src="<?= ROOT ?>/assets/logo.png" class="" style="width:70px;">
-      My School
+      <?=Auth::getSchoolname()?>
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
       aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">

@@ -2,7 +2,7 @@
 <?php $this->view('includes/nav') ?>
 
 <div class="container-fluid p-4 shadow mx-auto" style="max-width:1000px">
-    <?php $this->view('includes/crumbs') ?>
+    <?php $this->view('includes/crumbs',['crumbs'=>$crumbs]) ?>
     <div class="card-group justify-content-center">
         <table class="table table-striped table-hover">
             <tr>
@@ -23,14 +23,21 @@
                         <?=$row->school_name?>
                     </td>
                     <td>
-                        <?=$row->user_id?>
+                        <?=$row->user->firstname?> <?=$row->user->lastname?>
                     </td>
                     <td>
-                        <?=$row->date?>
+                        <?=get_date($row->date)?>
                     </td>
                     <td>
+                        <a href="<?= ROOT ?>/Schools/edit/<?=$row->id?>">
                         <button class="btn-sm btn btn-info text-white" ><i class="fa fa-edit" ></i></button>
+                        </a>
+                        <a href="<?= ROOT ?>/Schools/delete/<?=$row->id?>">
                         <button class="btn-sm btn btn-danger"><i class="fa fa-trash-alt" ></i></button>
+                        </a>
+                        <a href="<?= ROOT ?>/Switch_school/<?=$row->id?>">
+                        <button class="btn-sm btn btn-success">Switch to<i class="fa fa-chevron-right" ></i></button>
+                        </a>
                     </td>
                 </tr>
             <?php endforeach; ?>

@@ -14,7 +14,7 @@ class Signup extends Controller
                 $_POST['creation_date'] = date("Y-m-d H:i:s");
 
                 $user->insert($_POST);
-                $this->redirect('Login');
+                $this->redirect('Users');
             } else {
                 $errors = $user->errors;
             }

@@ -14,44 +14,68 @@ class Model extends Database
             $this->table = strtoLower($this::class) . "s";
         }
     }
+    // Only first item in row 
+    public function first($column, $value)
+    {
+        $column = addslashes($column);
+        $query = "select * from $this->table where $column LIKE '$value'"; //Search object based on given column and value.
+        $data = $this->query($query, ['value' => $value]);
+
+        if (is_array($data)) {
+            if (property_exists($this, 'afterSelect')) {
+                foreach ($this->afterSelect as $func) {
+                    $data = $this->$func($data);
+                }
+            }
+        }
+        if (is_array($data)) {
+            $data = $data[0];
+        }
+        return $data;
+
+    }
 
     public function where($column, $value)
     {
         $column = addslashes($column);
-        $query = "select * from $this->table where $column LIKE '$value'"; //Search object based on given column and value.
-        return $this->query($query, ['value' => $value]);
+        $query = "select * from $this->table where $column LIKE '$value'";
+        $data = $this->query($query, ['value' => $value]);
+
+        if (is_array($data)) {
+            if (property_exists($this, 'afterSelect')) {
+                foreach ($this->afterSelect as $func) {
+                    $data = $this->$func($data);
+                }
+            }
+        }
+        return $data;
 
     }
 
     public function insert($data)
-    {   
+    {
         // remove unwanted colums
-        if(property_exists($this, 'allowedColumns'))
-        {
-            foreach($data as $key=>$column )
-            {
+        if (property_exists($this, 'allowedColumns')) {
+            foreach ($data as $key => $column) {
 
-                if(!in_array($key,$this->allowedColumns))
-                {
+                if (!in_array($key, $this->allowedColumns)) {
                     unset($data[$key]);
                 }
             }
         }
         //run functions before insert
-        if(property_exists($this, 'beforeInsert'))
-        {
-            foreach($this->beforeInsert as $func )
-            {
-                $data=$this->$func($data);
+        if (property_exists($this, 'beforeInsert')) {
+            foreach ($this->beforeInsert as $func) {
+                $data = $this->$func($data);
             }
         }
-        $valuesfromdata=array_values($data);
+        $valuesfromdata = array_values($data);
         $keys = array_keys($data);
         $columns = implode(',', $keys);
-        $valuesfromdata=implode("','",$valuesfromdata);
+        $valuesfromdata = implode("','", $valuesfromdata);
         var_dump($valuesfromdata);
         $query = "insert into $this->table ($columns) values ('$valuesfromdata')"; //
-        
+
         return $this->query($query, $data);
 
     }
@@ -60,10 +84,10 @@ class Model extends Database
     {
         $str = "";
 
-        foreach($data as $key => $value){
-            $str .=$key. "="."'$value'".",";
+        foreach ($data as $key => $value) {
+            $str .= $key . "=" . "'$value'" . ",";
         }
-        $str = trim($str,",");
+        $str = trim($str, ",");
         $data['id'] = $id;
 
         $query = "update $this->table set $str where id='$id'"; //
@@ -75,9 +99,9 @@ class Model extends Database
 
     public function delete($id)
     {
-        
+
         $query = "delete from $this->table where id ='$id'"; //
-        $data['id']=$id;
+        $data['id'] = $id;
         return $this->query($query, $data);
 
     }
@@ -85,7 +109,18 @@ class Model extends Database
     public function findAll()
     {
         $query = "select * from $this->table ";
-        return $this->query($query);
+        $data = $this->query($query);
 
+        //run func ater select
+        if (is_array($data)) {
+            if (property_exists($this, 'afterSelect')) {
+                foreach ($this->afterSelect as $func) {
+                    $data = $this->$func($data);
+                }
+            }
+        }
+        return $data;
     }
+
+
 }

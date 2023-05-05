@@ -1,11 +1,11 @@
 <?php
-function get_var($key)
+function get_var($key,$default="")
 {
     if(isset($_POST[$key]))
     {
         return $_POST[$key];
     }
-    return "";
+    return $default;
 }
 
 function get_select($key,$value)
@@ -37,4 +37,21 @@ function random_string($length)
       
           return $string;
      }
+
+function get_date($date)
+{
+    return date("jS F, Y",strtotime($date));
+}
+
+function get_image($image,$gender = 'male')
+{
+    if(!file_exists($image))
+                {
+                    $image=ASSETS.'/user_female.jpg';
+                    if($gender == 'male'){
+                        $image=ASSETS.'/user_male.jpg';
+                    }
+                }
+                return $image;
+}
 ?>
